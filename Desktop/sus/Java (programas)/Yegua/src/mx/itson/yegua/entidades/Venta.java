@@ -1,17 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package mx.itson.yegua.entidades;
 
 import java.util.List;
 import mx.itson.yegua.enums.Categoria;
 import mx.itson.yegua.enums.TipoVenta;
 
-/**
- *
- * @author Andrey
- */
+// @author Andrey
+
 public class Venta 
 {
 
@@ -106,6 +101,7 @@ public class Venta
     private double total;
     private List<Articulo> articulos;
     
+    
     /**
     * Metodo para calcular el subtotal de la venta, incluyendo tasas de interes y descuentos.
     * Este metodo no recibe parametros y no retorna ningun valor.
@@ -118,46 +114,33 @@ public class Venta
         for(Articulo a : articulos)
         {
             double precio = a.getPrecio();
-            if (this.tipo.equals("credito"))
-            {
-                if (a.getCategoria() == Categoria.ALIMENTOS){
-                    precio *= 1.30; // Incrementa el precio un 30%
+            if (this.tipo.equals("credito")){
+                // Aplica el aumento solo si la categoría NO es ALIMENTOS
+                if (a.getCategoria() != Categoria.ALIMENTOS) {
+                    precio *= 1.30; // Incrementa el precio un 30% para otras categorías
                 }
             }
         subtotal += precio;
-            }
-        
-        // Aplica un descuento del 3% si el subtotal supera los $5000
-        if (subtotal > 5000)
-        {
-            subtotal *= 0.97; // Aplica el descuento de 3%
         }
-        
         this.subtotal = subtotal;
-        }
+    }
     
         
-    
-    
-
-/**
- * Metodo para calcular el descuento y el total final de la venta.
- * Este metodo no recibe parametros y no retorna un valor.
- * Asigna el valor del descuento al atributo descuento y el total al atributo total.
- */
-public void calcularTotal() {
-    double descuento = 0;
-
-    // Determina si se aplica un descuento adicional
-    if (this.subtotal > 5000) {
-        descuento = this.subtotal * 0.03; // 3% de descuento adicional
+    /**
+     * Metodo para calcular el descuento y el total final de la venta.
+     * Este metodo no recibe parametros y no retorna un valor.
+     * Asigna el valor del descuento al atributo descuento y el total al atributo total.
+     */
+    public void calcularTotal()
+    {
+        double descuento = 0;
+        // Determina si se aplica un descuento adicional
+        if (this.subtotal > 5000) {
+            descuento = this.subtotal * 0.03; // 3% de descuento adicional
+        }
+        this.descuento = descuento;
+        this.total = this.subtotal - descuento; // Calcula el total restando el descuento
     }
 
-    this.descuento = descuento;
-    this.total = this.subtotal - descuento; // Calcula el total restando el descuento
-}
-
-
-        
-        
+    
 }

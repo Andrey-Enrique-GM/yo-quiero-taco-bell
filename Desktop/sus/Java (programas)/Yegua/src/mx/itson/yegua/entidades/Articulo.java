@@ -1,15 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package mx.itson.yegua.entidades;
 
 import mx.itson.yegua.enums.Categoria;
 
-/**
- *
- * @author Andrey
- */
+// @author Andrey
+
 public class Articulo 
 {
 
